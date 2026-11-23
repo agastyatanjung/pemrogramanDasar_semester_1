@@ -8,6 +8,7 @@ Scanner scanner = new Scanner(System.in);
 String pilihanLanjut;
 boolean programLanjut;
 
+double bayar;
 do {
 double totalBelanja = 0;
 
@@ -69,12 +70,22 @@ System.out.println("\n=================================");
 System.out.println("Total Kotor : Rp " + totalBelanja);
 System.out.println("Diskon (" + (persenDiskon*100) + "%) : Rp " + nominalDiskon + memberDiskon);
 System.out.println("Total Harus Bayar: Rp " + totalBayar);
-System.out.print("Uang Dibayarkan: Rp ");
-double bayar = scanner.nextDouble();
-scanner.nextLine();
 
-// SISTEM KEMBALIAN
-System.out.println("Kembalian : Rp " + (bayar - totalBayar));
+// SISTEM PENGECEKAN UANG APAKAH CUKUP ATAU TIDAK
+do {
+        System.out.print("Uang Dibayarkan: Rp ");
+        bayar = scanner.nextDouble();
+
+
+        if (bayar < totalBayar) {
+            System.out.println("Uang anda kurang");
+        }
+
+    } while (bayar < totalBayar);
+
+    System.out.println("Kembalian : Rp " + (bayar - totalBayar));
+    scanner.nextLine();
+
 
 // SISTEM PENGULANGAN
 System.out.println("Apakah anda ingin lanjut? (yes or no)");
